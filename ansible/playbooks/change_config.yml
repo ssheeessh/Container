@@ -1,0 +1,10 @@
+---
+- name: Изменить конфигурацию контейнера VM Guard
+  hosts: vm_guard_servers
+  gather_facts: false
+  become: false
+  vars:
+    app_port: 8080
+    https_mode: "strict"
+  roles:
+    - role: vm_guard_app

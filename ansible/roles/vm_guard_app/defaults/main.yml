@@ -1,0 +1,17 @@
+---
+app_name: "VM_Guard"
+app_version: "1.0.0-dz9"
+app_environment: "demo"
+app_port: 8000
+app_install_path: "/tmp/vm_guard_demo"
+https_mode: "enabled"
+
+managed_files:
+  - manage.py
+  - django_project/settings.py
+  - django_project/urls.py
+  - tasks/views.py
+  - tasks/urls.py
+  - tasks/templates/tasks/index.html
+  - tasks/templates/tasks/result.html
+  - tasks/templates/tasks/logs.html

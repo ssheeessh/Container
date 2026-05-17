@@ -1,0 +1,7 @@
+---
+- name: Развернуть контейнер VM Guard
+  hosts: vm_guard_servers
+  gather_facts: false
+  become: false
+  roles:
+    - role: vm_guard_app

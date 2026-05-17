@@ -1,0 +1,6 @@
+[vm_guard_servers]
+localhost ansible_connection=local
+
+[vm_guard_servers:vars]
+ansible_python_interpreter=auto
+project_root=/Users/kirill/Desktop/Container

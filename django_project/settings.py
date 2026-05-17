@@ -1,3 +1,4 @@
+import os
 """
 Django settings for django_project project.
 
@@ -22,9 +23,11 @@ SECRET_KEY = 'django-insecure-local-development-key'
 DEBUG = True
 
 # Хосты, с которых разрешено открывать приложение
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:30080",
 ]
 
 
@@ -108,11 +111,13 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # -------------------------------------------------------------------
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-
-        # Локальная база данных будет храниться в файле db.sqlite3
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME", "vmguard_db"),
+        "USER": os.environ.get("DB_USER", "vmguard_user"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "vmguard_pass"),
+        "HOST": os.environ.get("DB_HOST", "postgres"),
+        "PORT": os.environ.get("DB_PORT", "5432"),
     }
 }
 
@@ -170,3 +175,4 @@ STATIC_URL = 'static/'
 # -------------------------------------------------------------------
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

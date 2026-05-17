@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Django
+db.sqlite3
+*.log
+staticfiles/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Docker
+*.tar
+
+# Kubernetes / local temp
+*.swp
+*.swo
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Testing / cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Ansible temp
+*.retry

@@ -1,0 +1,43 @@
+---
+- name: Создать каталог приложения
+  ansible.builtin.file:
+    path: "{{ app_install_path }}"
+    state: directory
+    mode: "0755"
+
+- name: Создать каталог django_project
+  ansible.builtin.file:
+    path: "{{ app_install_path }}/django_project"
+    state: directory
+    mode: "0755"
+
+- name: Создать каталог tasks
+  ansible.builtin.file:
+    path: "{{ app_install_path }}/tasks"
+    state: directory
+    mode: "0755"
+
+- name: Создать каталог шаблонов
+  ansible.builtin.file:
+    path: "{{ app_install_path }}/tasks/templates/tasks"
+    state: directory
+    mode: "0755"
+
+- name: Скопировать управляемые файлы приложения
+  ansible.builtin.copy:
+    src: "{{ project_root }}/{{ item }}"
+    dest: "{{ app_install_path }}/{{ item }}"
+    mode: preserve
+  loop: "{{ managed_files }}"
+
+- name: Разместить стартовый скрипт
+  ansible.builtin.template:
+    src: start_vm_guard.sh.j2
+    dest: "{{ app_install_path }}/start_vm_guard.sh"
+    mode: "0755"
+
+- name: Разместить файл конфигурации развертывания
+  ansible.builtin.template:
+    src: deployment_config.json.j2
+    dest: "{{ app_install_path }}/deployment_config.json"
+    mode: "0644"
